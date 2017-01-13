@@ -7,21 +7,21 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" href="img/favicon.png">
 	<title>Educablocks</title>
-
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-	<link rel="stylesheet" href="css/style.css">
-
 	<!-- css -->
 	<link rel="stylesheet" type="text/css" href="css/base.css">
 	<link rel="stylesheet" type="text/css" href="css/project.css">
 	<link rel="stylesheet" type="text/css" href="css/visualino.css">
 	<link rel="stylesheet" type="text/css" href="js/highlight/styles/default.css">
 
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+	<link rel="stylesheet" href="css/style.css">
+
+
 </head>
 
 <body>
 	<div class="container">
-    <nav class="navbar navbar-default">
+		<nav class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -47,7 +47,7 @@
 		<block type="controls_setupLoop" deletable="false"></block>
 	</xml>
 	<div id="wrap">
-		<div id="blockly" style="float: left; width: 66%;"></div>
+		<div id="blockly" style="float: left; height: 500px; width: 66%;"></div>
 		<div id="code" style="float: right; width: 32%;"></div>
 	</div>
 </div>
@@ -77,7 +77,7 @@
 		}
 
 		RoboBlocks.load({
-			zoom: 1
+			zoom: 0.5
 		});
 
 		// New workspace for each test case
