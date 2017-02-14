@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="img/favicon.png">
+  <title>Educablocks</title>
+
+  <link rel="stylesheet" type="text/css" href="src/bloques/css/educablocks.css">
+  <link rel="stylesheet" href="material/css/material-dashboard.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="material/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="material/css/demo.css" rel="stylesheet"/>
+
+
+      <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+<div class="container">
+    <nav class="navbar navbar-info navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="index.html">Educablocks</a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">            
+            <li class="dropdown active ">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Programas<b> </b></a>
+              <ul class="dropdown-menu">
+            <li><a href="index.html">Programación por bloques</a></li>
+            <li><a href="robots.html">Control de robots</a></li>
+            <li class="active"><a href="dashboard.html">Panel IOT</a></li>
+              </ul>
+            </li>
+        </ul>
+      </div>
+  </div>
+</nav>
+ <section id="temperatura">
+<div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-header" data-background-color="blue">
+                  <i class="material-icons">cloud</i>
+                </div>
+                <div class="card-content">
+                  <p class="category">Pin analógico A0:</p>
+                  <h3 class="title"> <span id='A0'></span> <small>grados</small></h3>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons">show_chart</i> Sensor de Humedad
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-header" data-background-color="blue">
+              <i class="material-icons">brightness_5</i>
+                </div>
+                <div class="card-content">
+                  <p class="category">Pin analógico A1:</p>
+                  <h3 class="title"> <span id='A1'></span> <small>grados</small></h3>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons">show_chart</i> Sensor LDR
+                  </div>
+                </div>
+              </div>
+            </div>
+           <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-header" data-background-color="blue">
+              <i class="material-icons">surround_sound</i>
+                </div>
+                <div class="card-content">
+                  <p class="category">Pin analógico A2:</p>
+                  <h3 class="title"> <span id='A2'></span> <small>grados</small></h3>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons">show_chart</i> Sensor de sonido
+                </div>
+                </div>
+              </div>
+            </div>
+
+              <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-header" data-background-color="blue">
+              <i class="material-icons">replay</i>
+                </div>
+                <div class="card-content">
+                  <p class="category">Pin analógico A3:</p>
+                  <h3 class="title"> <span id='A3'></span> <small>grados</small></h3>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons">show_chart</i> Potenciómetro
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-8">
+              <div class="card">
+                <div class="card-header card-chart" data-background-color="blue">
+                  <div class="ct-chart" id="container"></div>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons">access_time</i> actualizando cada 5 segundos
+                  </div>
+                </div>
+              </div>
+            </div>
+              <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-header" data-background-color="blue">
+              <i class="material-icons">wifi</i>
+                </div>
+                <div class="card-content">
+                  <p class="category"><i class="material-icons">network_check</i> Dirección IP del dispositivo</p>
+                  <br>
+                  <input id='device_address' type="text" name="fname" placeholder=" localhost:4000/serial">
+                </div>
+                <div class="card-footer">
+                <div class="stats">
+                <label class="col-md-6 control-label" for="validate"></label>
+                <div class="col-md-6">
+                <button id="validate" class="btn btn-info center-block" type="button">Conectar</button>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-header" data-background-color="blue">
+              <i class="material-icons">lightbulb_outline</i>
+                </div>
+                <div class="card-content">
+                  <p class="category"><i class="material-icons">highlight</i> Pin digital 13:</p>
+                  <br>
+                  <br>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                  <br>
+            <button id='on' class='btn btn-info ' type="button">Prender</button>
+            <button id='off' class='btn btn-danger' type="button">Apagar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+              </section>
+ 
+  </div>
+
+  <!-- js -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script src='https://code.highcharts.com/highcharts.js'></script>
+  <script src='https://code.highcharts.com/modules/exporting.js'></script>
+
+  <script type="text/javascript" src="https://cdn.rawgit.com/Foliotek/AjaxQ/master/ajaxq.js"></script>
+  <script type="text/javascript" src="src/dashboard/js/arest.js"></script>
+  <script type="text/javascript" src="src/dashboard/js/script.js"></script>
+  <script type="text/javascript" src="src/dashboard/js/index.js"></script>
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
