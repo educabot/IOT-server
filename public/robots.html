@@ -8,162 +8,156 @@
   <link rel="icon" href="img/favicon.png">
   <title>Educablocks</title>
   <!-- css -->
-  <link rel="stylesheet" type="text/css" href="src/bloques/css/educablocks.css">
-  <link rel="stylesheet" href="material/css/material-dashboard.css" />
-  <link rel="stylesheet" href="material/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="material/css/demo.css" />
-  
-  <script type="text/javascript" src="Blob.js"></script>
-  <script type="text/javascript" src="spin.js"></script>
-  <script type="text/javascript" src="FileSaver.min.js"></script>
-  <script type="text/javascript" src="blockly_helper.js"></script>
+  <link rel="stylesheet" href="src/bloques/css/educablocks.css">
+  <link rel="stylesheet" href="src/material/css/material-dashboard.css" />
+  <link rel="stylesheet" href="src/material/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="src/material/css/demo.css" />
 
-    <!--     Fonts and icons     -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
 
 </head>
 
 <body>
-<div class="container">
+  <div class="container">
     <nav class="navbar navbar-info navbar-fixed-top" role="navigation">
-  <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="index.html">Educablocks</a>
-      </div>
+      <div class="container-fluid">
 
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="index.html">Educablocks</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
             <li class="dropdown active ">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Programas<b> </b></a>
               <ul class="dropdown-menu">
-            <li><a href="index.html">Programación por bloques</a></li>
-            <li class="active"><a href="robots.html">Control de robots</a></li>
-            <li><a href="dashboard.html">Panel IOT</a></li>
+                <li><a href="index.html">Programación por bloques</a></li>
+                <li class="active"><a href="robots.html">Control de robots</a></li>
+                <li><a href="dashboard.html">Panel IOT</a></li>
               </ul>
-            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="material-icons">save</i>
-                                    <p class="hidden-lg hidden-md">save</p>
-                                </a>
-                                <ul class="dropdown-menu">
-                                <li><a href="#" onclick="uploadClick()">Cargar en Genuino 101</a></li>
-                                <li><a href="#" onclick="saveCode()">Guardar código Arduino</a></li>
-                                </ul>
-                                
-        </a>
-        </li>
-        </li>
-        </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="material-icons">save</i>
+                  <p class="hidden-lg hidden-md">save</p>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="#" onclick="uploadClick()">Cargar en Genuino 101</a></li>
+                  <li><a href="#" onclick="saveCode()">Guardar código Arduino</a></li>
+                </ul>
+              </li>
+            </li>
+          </ul>
         </div>
-        </div>
-        <!--/.nav-collapse -->
+
       </div>
-      <!--/.container-fluid -->
     </nav>
-
-    <xml id="startBlocks" style="display: none">
-      <block type="controls_setupLoop" deletable="false"></block>
-    </xml>
-    <div id="wrap">
-        <div id="blockly" style="float: center; height: 500px; width: 100%;"></div>
-    </div>
   </div>
-  <!-- js -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-  
 
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <xml id="startBlocks" style="display: none">
+    <block type="controls_setupLoop" deletable="false"></block>
+  </xml>
+  <div id="wrap">
+    <div id="blockly" style="height: 500px; width: 100%;"></div>
+  </div>
+</div>
 
-  <script src="src/bloques/js/underscore/underscore.js"></script>
-	<script src="src/bloques/js/blockly-bq/blockly_compressed.js"></script>
-	<script src="src/bloques/js/blockly-bq/blocks_compressed.js"></script>
-	<script src="src/bloques/js/blockly-bq/arduino_compressed.js"></script>
-	<script src="src/bloques/js/roboblocks2.js"></script>
-	<script src="src/highlight/highlight.pack.js"></script>
-  <script>
+<script src="js/Blob.js"></script>
+<script src="js/spin.js"></script>
+<script src="js/FileSaver.min.js"></script>
+<script src="js/blockly_helper.js"></script>
+<!-- js -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="src/bloques/js/underscore/underscore.js"></script>
+<script src="src/bloques/js/blockly-bq/blockly_compressed.js"></script>
+<script src="src/bloques/js/blockly-bq/blocks_compressed.js"></script>
+<script src="src/bloques/js/blockly-bq/arduino_compressed.js"></script>
+<script src="src/bloques/js/roboblocks2.js"></script>
+<script src="src/highlight/highlight.pack.js"></script>
+<script>
   if (window.RoboblocksLanguage === undefined ||
-    window.RoboblocksLanguage == null) {
-      var RoboblocksLanguage = 'es-ES';
+  window.RoboblocksLanguage == null) {
+    var RoboblocksLanguage = 'es-ES';
+  }
+
+  Roboblocks2.load({
+    zoom: 0.5
+  });
+
+  // New workspace for each test case
+  var el = document.getElementById('blockly');
+  Blockly.inject(el, {
+    toolbox: Blockly.createToolbox()
+  });
+  // Create a default setup/loop block
+  Blockly.Xml.domToWorkspace(Blockly.getMainWorkspace(),
+  document.getElementById('startBlocks'));
+
+  $('.blocklySvg, #blockly').height('100%');
+  $('.blocklySvg').width('100%');
+
+  var colors = [
+    "",
+    Roboblocks2.LANG_COLOUR_PROCEDURES,
+    Roboblocks2.LANG_COLOUR_CONTROL,
+    Roboblocks2.LANG_COLOUR_LOGIC,
+    Roboblocks2.LANG_COLOUR_MATH,
+    Roboblocks2.LANG_COLOUR_VARIABLES,
+    Roboblocks2.LANG_COLOUR_TEXT,
+    Roboblocks2.LANG_COLOUR_COMMUNICATION,
+    Roboblocks2.LANG_COLOUR_ZUM,
+    Roboblocks2.LANG_COLOUR_BQ,
+    Roboblocks2.LANG_COLOUR_ADVANCED,
+    Roboblocks2.LANG_COLOUR_LCD,
+    Roboblocks2.LANG_COLOUR_SERVO,
+  ];
+  $('.blocklyTreeRow').each(function(i, e) {
+    $(e).prepend('<span class="treeLabelBlock" style="background-color:' + colors[i] + '"></span>');
+  });
+
+  // Update code
+  Blockly.addChangeListener(function() {
+    $('#code').html('<code class="c++"><pre>' +
+    escapeCode(Blockly.Arduino.workspaceToCode()) +
+    '</pre></code>');
+    // Highlight
+    $("pre").each(function(i, e) {
+      hljs.highlightBlock(e);
+    });
+  });
+
+  // Show/hide code
+  function toogleCode() {
+    if ($('#code').css('display') == 'none') {
+      // Show
+      $('#code').show();
+      $('#blockly').width('66%');
+    } else {
+      // Hide
+      $('#code').hide();
+      $('#blockly').width('100%');
     }
+    // Resize workspace
+    Blockly.fireUiEvent(window, "resize");
+  }
 
-    Roboblocks2.load({
-      zoom: 0.5
-    });
+  function escapeCode(code) {
+    var str = code;
+    str = str.replace(/</g, "&lt;");
+    str = str.replace(/>/g, "&gt;");
+    return str;
+  }
 
-    // New workspace for each test case
-    var el = document.getElementById('blockly');
-    Blockly.inject(el, {
-      toolbox: Blockly.createToolbox()
-    });
-    // Create a default setup/loop block
+  function resetWorkspace() {
+    Blockly.mainWorkspace.clear();
     Blockly.Xml.domToWorkspace(Blockly.getMainWorkspace(),
     document.getElementById('startBlocks'));
+  }
+  </script>
+</body>
 
-    $('.blocklySvg, #blockly').height('100%');
-    $('.blocklySvg').width('100%');
-
-    var colors = [
-      "",
-      Roboblocks2.LANG_COLOUR_PROCEDURES,
-      Roboblocks2.LANG_COLOUR_CONTROL,
-      Roboblocks2.LANG_COLOUR_LOGIC,
-      Roboblocks2.LANG_COLOUR_MATH,
-      Roboblocks2.LANG_COLOUR_VARIABLES,
-      Roboblocks2.LANG_COLOUR_TEXT,
-      Roboblocks2.LANG_COLOUR_COMMUNICATION,
-      Roboblocks2.LANG_COLOUR_ZUM,
-      Roboblocks2.LANG_COLOUR_BQ,
-      Roboblocks2.LANG_COLOUR_ADVANCED,
-      Roboblocks2.LANG_COLOUR_LCD,
-      Roboblocks2.LANG_COLOUR_SERVO,
-    ];
-    $('.blocklyTreeRow').each(function(i, e) {
-      $(e).prepend('<span class="treeLabelBlock" style="background-color:' + colors[i] + '"></span>');
-    });
-
-    // Update code
-    Blockly.addChangeListener(function() {
-      $('#code').html('<code class="c++"><pre>' +
-      escapeCode(Blockly.Arduino.workspaceToCode()) +
-      '</pre></code>');
-      // Highlight
-      $("pre").each(function(i, e) {
-        hljs.highlightBlock(e);
-      });
-      // webHelper is injected in Visualino
-      //webHelper.sourceChanged();
-    });
-
-    // Show/hide code
-    function toogleCode() {
-      if ($('#code').css('display') == 'none') {
-        // Show
-        $('#code').show();
-        $('#blockly').width('66%');
-      } else {
-        // Hide
-        $('#code').hide();
-        $('#blockly').width('100%');
-      }
-      // Resize workspace
-      Blockly.fireUiEvent(window, "resize");
-    }
-
-    function escapeCode(code) {
-      var str = code;
-      str = str.replace(/</g, "&lt;");
-      str = str.replace(/>/g, "&gt;");
-      return str;
-    }
-
-    function resetWorkspace() {
-      Blockly.mainWorkspace.clear();
-      Blockly.Xml.domToWorkspace(Blockly.getMainWorkspace(),
-      document.getElementById('startBlocks'));
-    }
-    </script>
-  </body>
-
-  </html>
+</html>
