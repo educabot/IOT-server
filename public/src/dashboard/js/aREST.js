@@ -30,11 +30,8 @@ function Device(address) {
   };
 
   this.analogRead = function(pin, callback) {
-    let url = 'http://' + this.address + '/analog/' + pin;
-
+  //  let url = 'http://' + this.address + '/analog/' + pin;
   //  httpGetAsync(url)
-
-
     $.ajaxq('queue', {
       url: 'http://' + this.address + '/analog/' + pin,
       crossDomain: true

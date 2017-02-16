@@ -31,8 +31,9 @@ $(document).ready(function() {
     setInterval(function() {
       device.analogRead(0, function(data) {
         $("#A0").html(data.return_value);
+
       });
-    }, 5000);
+    }, 1000);
 
     device.analogRead(1, function(data) {
       $("#A1").html(data.return_value);
@@ -41,7 +42,7 @@ $(document).ready(function() {
       device.analogRead(1, function(data) {
         $("#A1").html(data.return_value);
       });
-    }, 5000);
+    }, 1000);
 
     // Digital read every 5 seconds
     // device.digitalRead(11, function(data) {
