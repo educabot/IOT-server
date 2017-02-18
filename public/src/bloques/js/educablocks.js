@@ -5479,60 +5479,6 @@
 
 
 
-//segundo caras inicio
-     Blockly.Arduino.matriz_caras_def = function() {
-            var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC) || '';
-            var dropdown_stat = this.getFieldValue('STAT') || '';
-            Blockly.Arduino.definitions_['declare_matriz_caras'] = JST['matriz_caras_definitions']({});
-            var code = '';
-            var a = RoboBlocks.findPinMode(dropdown_pin);
-            code += a['code'];
-            dropdown_pin = a['pin'];
-
-            if (RoboBlocks.isVariable(dropdown_pin)) {
-                code += JST['caras_setups']({
-                    'dropdown_pin': dropdown_pin,
-                    'dropdown_stat': dropdown_stat
-
-                });
-            } else {
-                Blockly.Arduino.setups_['matriz_caras' + dropdown_pin] = JST['caras_setups']({
-                    'dropdown_pin': dropdown_pin,
-                    'dropdown_stat': dropdown_stat
-
-                });
-            }
-            code += JST['matriz_caras']({
-                'dropdown_pin': dropdown_pin,
-                'dropdown_stat': dropdown_stat
-
-            });
-            return code;
-        };
-        /**
-         * servo_cont block definition
-         * @type {Object}
-         */
-        Blockly.Blocks.matriz_caras_def = {
-            category: RoboBlocks.locales.getKey('LANG_CATEGORY_LCD'),
-            tags: ['servo'],
-            helpUrl: RoboBlocks.URL_CONTINUOUS_ROTATION_SERVO,
-            init: function() {
-                this.setColour(RoboBlocks.LANG_COLOUR_LCD);
-                this.appendDummyInput()
-                    .appendField(RoboBlocks.locales.getKey('LANG_matriz_caras_estado'))
-                    .appendField(new Blockly.FieldDropdown([
-                        [RoboBlocks.locales.getKey('LANG_matriz_caras_feliz') || 'Feliz', '0'],
-                        [RoboBlocks.locales.getKey('LANG_matriz_caras_sorprendido') || 'Sorprendido', '1'],
-                        [RoboBlocks.locales.getKey('LANG_matriz_caras_enojado') || 'Enojado', '2'],
-                    ]), 'STAT')
-            this.setInputsInline(false);
-                this.setPreviousStatement(true, null);
-                this.setNextStatement(true, null);
-                this.setTooltip(RoboBlocks.locales.getKey('LANG_matriz_caras_DEF_TOOLTIP'));
-            }
-        };
-//segundo caras final
 
 
         Blockly.Arduino.lcd_i2c = function() {
@@ -5706,6 +5652,61 @@
         };
 
 //matriz final
+
+//segundo caras inicio
+     Blockly.Arduino.matriz_caras_def = function() {
+            var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC) || '';
+            var dropdown_stat = this.getFieldValue('STAT') || '';
+            Blockly.Arduino.definitions_['declare_matriz_caras'] = JST['matriz_caras_definitions']({});
+            var code = '';
+            var a = RoboBlocks.findPinMode(dropdown_pin);
+            code += a['code'];
+            dropdown_pin = a['pin'];
+
+            if (RoboBlocks.isVariable(dropdown_pin)) {
+                code += JST['caras_setups']({
+                    'dropdown_pin': dropdown_pin,
+                    'dropdown_stat': dropdown_stat
+
+                });
+            } else {
+                Blockly.Arduino.setups_['matriz_caras' + dropdown_pin] = JST['caras_setups']({
+                    'dropdown_pin': dropdown_pin,
+                    'dropdown_stat': dropdown_stat
+
+                });
+            }
+            code += JST['matriz_caras']({
+                'dropdown_pin': dropdown_pin,
+                'dropdown_stat': dropdown_stat
+
+            });
+            return code;
+        };
+        /**
+         * servo_cont block definition
+         * @type {Object}
+         */
+        Blockly.Blocks.matriz_caras_def = {
+            category: RoboBlocks.locales.getKey('LANG_CATEGORY_LCD'),
+            tags: ['servo'],
+            helpUrl: RoboBlocks.URL_CONTINUOUS_ROTATION_SERVO,
+            init: function() {
+                this.setColour(RoboBlocks.LANG_COLOUR_LCD);
+                this.appendDummyInput()
+                    .appendField(RoboBlocks.locales.getKey('LANG_matriz_caras_estado'))
+                    .appendField(new Blockly.FieldDropdown([
+                        [RoboBlocks.locales.getKey('LANG_matriz_caras_feliz') || 'Feliz', '0'],
+                        [RoboBlocks.locales.getKey('LANG_matriz_caras_sorprendido') || 'Sorprendido', '1'],
+                        [RoboBlocks.locales.getKey('LANG_matriz_caras_enojado') || 'Enojado', '2'],
+                    ]), 'STAT')
+            this.setInputsInline(false);
+                this.setPreviousStatement(true, null);
+                this.setNextStatement(true, null);
+                this.setTooltip(RoboBlocks.locales.getKey('LANG_matriz_caras_DEF_TOOLTIP'));
+            }
+        };
+//segundo caras final
 
 
 //matriz print
