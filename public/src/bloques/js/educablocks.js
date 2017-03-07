@@ -134,7 +134,7 @@
                 LANG_ENTRADAS_ULTRASONIDO: 'Ultrasonic Sensor',
                 LANG_ENTRADAS_ULTRASONIDO_RED_PIN: 'ECHO PIN#',
                 LANG_ENTRADAS_ULTRASONIDO_BLUE_PIN: 'TRIGGER PIN#',
-                LANG_ENTRADAS_ULTRASONIDO_TOOLTIP: 'Returns the distance measured by the ultrasonic sensor.',
+                LANG_ENTRADAS_ULTRASONIDO_TOOLTIP: 'Returns the distancia measured by the ultrasonic sensor.',
                 LANG_SALIDAS_BUTTON: 'Button',
                 LANG_SALIDAS_BUTTON_PIN: 'PIN#',
                 LANG_SALIDAS_BUTTON_TOOLTIP: 'Button',
@@ -1229,18 +1229,18 @@
             return __p
         };
 
-        this["JST"]["SALIDAS_gyro_definitions_distance"] = function(obj) {
+        this["JST"]["SALIDAS_gyro_definitions_distancia"] = function(obj) {
             obj || (obj = {});
             var __t, __p = '',
                 __e = _.escape;
             with(obj) {
-                __p += 'long Distance(int trigger_pin, int echo_pin)\n{\n  long microseconds = TP_init(trigger_pin, echo_pin);\n  long distance;\n  distance = microseconds/29/2;\n  if (distance == 0){\n    distance = 999;\n  }\n  return distance;\n}\n';
+                __p += 'long distancia(int trigger_pin, int echo_pin)\n{\n  long microseconds = tiempo(trigger_pin, echo_pin);\n  long distancia;\n  distancia = microseconds/29/2;\n  if (distancia == 0){\n    distancia = 999;\n  }\n  return distancia;\n}\n';
 
             }
             return __p
         };
 
-        this["JST"]["SALIDAS_gyro_definitions_tp_init"] = function(obj) {
+        this["JST"]["SALIDAS_gyro_definitions_tiempo"] = function(obj) {
             obj || (obj = {});
             var __t, __p = '',
                 __e = _.escape;
@@ -1280,18 +1280,18 @@
             return __p
         };
 
-        this["JST"]["SALIDAS_ace_definitions_distance"] = function(obj) {
+        this["JST"]["SALIDAS_ace_definitions_distancia"] = function(obj) {
             obj || (obj = {});
             var __t, __p = '',
                 __e = _.escape;
             with(obj) {
-                __p += 'long Distance(int trigger_pin, int echo_pin)\n{\n  long microseconds = TP_init(trigger_pin, echo_pin);\n  long distance;\n  distance = microseconds/29/2;\n  if (distance == 0){\n    distance = 999;\n  }\n  return distance;\n}\n';
+                __p += 'long distancia(int trigger_pin, int echo_pin)\n{\n  long microseconds = tiempo(trigger_pin, echo_pin);\n  long distancia;\n  distancia = microseconds/29/2;\n  if (distancia == 0){\n    distancia = 999;\n  }\n  return distancia;\n}\n';
 
             }
             return __p
         };
 
-        this["JST"]["SALIDAS_ace_definitions_tp_init"] = function(obj) {
+        this["JST"]["SALIDAS_ace_definitions_tiempo"] = function(obj) {
             obj || (obj = {});
             var __t, __p = '',
                 __e = _.escape;
@@ -1324,7 +1324,7 @@
             var __t, __p = '',
                 __e = _.escape;
             with(obj) {
-             __p += 'Distance(' +
+             __p += 'distancia(' +
                     ((__t = (trigger_pin)) == null ? '' : __t) +
                     ',' +
                     ((__t = (echo_pin)) == null ? '' : __t) +
@@ -1334,23 +1334,23 @@
             return __p
         };
 
-        this["JST"]["SALIDAS_bat_definitions_distance"] = function(obj) {
+        this["JST"]["SALIDAS_bat_definitions_distancia"] = function(obj) {
             obj || (obj = {});
             var __t, __p = '',
                 __e = _.escape;
             with(obj) {
-                __p += 'long Distance(int trigger_pin, int echo_pin)\n{\n  long microseconds = TP_init(trigger_pin, echo_pin);\n  long distance;\n  distance = microseconds/29/2;\n  if (distance == 0){\n    distance = 999;\n  }\n  return distance;\n}\n';
+                __p += 'long distancia(int trigger_pin, int echo_pin)\n{\n  long microseconds = tiempo(trigger_pin, echo_pin);\n  long distancia;\n  distancia = microseconds/29/2;\n  if (distancia == 0){\n    distancia = 999;\n  }\n  return distancia;\n}\n';
 
             }
             return __p
         };
 
-        this["JST"]["SALIDAS_bat_definitions_tp_init"] = function(obj) {
+        this["JST"]["SALIDAS_bat_definitions_tiempo"] = function(obj) {
             obj || (obj = {});
             var __t, __p = '',
                 __e = _.escape;
             with(obj) {
-                __p += '//sensor de ultrasonido\nlong TP_init(int trigger_pin, int echo_pin)\n{\n  digitalWrite(trigger_pin, LOW);\n  delayMicroseconds(2);\n  digitalWrite(trigger_pin, HIGH);\n  delayMicroseconds(10);\n  digitalWrite(trigger_pin, LOW);\n  long microseconds = pulseIn(echo_pin ,HIGH);\n  return microseconds;\n}\n';
+                __p += '//sensor de ultrasonido\nlong tiempo(int trigger_pin, int echo_pin)\n{\n  digitalWrite(trigger_pin, LOW);\n  delayMicroseconds(2);\n  digitalWrite(trigger_pin, HIGH);\n  delayMicroseconds(10);\n  digitalWrite(trigger_pin, LOW);\n  long microseconds = pulseIn(echo_pin ,HIGH);\n  return microseconds;\n}\n';
 
             }
             return __p
@@ -1989,7 +1989,7 @@
             var __t, __p = '',
                 __e = _.escape;
             with(obj) {
-                __p += '#include <Wire.h>\n#include <LiquidCrystal_I2C.h>';
+                __p += '#include <Wire.h>\n#include <LiquidCrystal_I2C.h>\n';
 
             }
             return __p
@@ -3204,7 +3204,7 @@
             code += a['code'];
             trigger_pin = a['pin'];
 
-            Blockly.Arduino.definitions_['define_SALIDAS_gyro_tp_init'] = JST['SALIDAS_gyro_definitions_tp_init']({});
+            Blockly.Arduino.definitions_['define_SALIDAS_gyro_tiempo'] = JST['SALIDAS_gyro_definitions_tiempo']({});
             if (RoboBlocks.isVariable(dropdown_stat)) {
                 code += JST['SALIDAS_bat_setups_echo']({
                     'dropdown_stat': dropdown_stat
@@ -3240,7 +3240,7 @@
             code += a['code'];
             trigger_pin = a['pin'];
 
-            Blockly.Arduino.definitions_['define_SALIDAS_ace_tp_init'] = JST['SALIDAS_ace_definitions_tp_init']({});
+            Blockly.Arduino.definitions_['define_SALIDAS_ace_tiempo'] = JST['SALIDAS_ace_definitions_tiempo']({});
             if (RoboBlocks.isVariable(dropdown_stat)) {
                 code += JST['SALIDAS_bat_setups_echo']({
                     'dropdown_stat': dropdown_stat
@@ -3285,8 +3285,8 @@
             code += a['code'];
             trigger_pin = a['pin'];
 
-            Blockly.Arduino.definitions_['define_SALIDAS_bat_tp_init'] = JST['SALIDAS_bat_definitions_tp_init']({});
-            Blockly.Arduino.definitions_['define_SALIDAS_bat_distance'] = JST['SALIDAS_bat_definitions_distance']({});
+            Blockly.Arduino.definitions_['define_SALIDAS_bat_tiempo'] = JST['SALIDAS_bat_definitions_tiempo']({});
+            Blockly.Arduino.definitions_['define_SALIDAS_bat_distancia'] = JST['SALIDAS_bat_definitions_distancia']({});
             if (RoboBlocks.isVariable(echo_pin)) {
                 code += JST['SALIDAS_bat_setups_echo']({
                     'echo_pin': echo_pin
@@ -5481,6 +5481,7 @@
 
 
 
+
         Blockly.Arduino.lcd_i2c = function() {
            var lcd_pins = {};
             lcd_pins['lcd_direccion'] = this.getFieldValue('LCD_DIRECCION');
@@ -5707,7 +5708,6 @@
             }
         };
 //segundo caras final
-
 
 //matriz print
 

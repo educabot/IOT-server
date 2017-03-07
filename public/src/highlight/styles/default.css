@@ -5,13 +5,12 @@ Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiac
 */
 
 .hljs {
-  -webkit-text-size-adjust: none;
   background: white;
   font-family: Menlo, 'Bitstream Vera Sans Mono', 'DejaVu Sans Mono', Monaco, Consolas, monospace;
   font-size: 12px;
   line-height: 1.5;
-  padding: 10px;
-  min-height: 420px;
+  min-height: 480px;
+  border-width: 0 !important;
 }
 
 .hljs{

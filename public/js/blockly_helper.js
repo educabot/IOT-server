@@ -270,3 +270,7 @@ function resetClick() {
         }
     });
 }
+
+
+
+

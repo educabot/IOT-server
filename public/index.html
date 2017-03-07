@@ -10,11 +10,8 @@
   <!-- css -->
   <link rel="stylesheet" type="text/css" href="src/highlight/styles/default.css">
   <link rel="stylesheet" href="src/bloques/css/educablocks.css">
-  <link rel="stylesheet" href="src/material/css/material-dashboard.css"/>
   <link rel="stylesheet" href="src/material/css/bootstrap.min.css" />
-  <!-- sirve?   <link rel="stylesheet" href="src/material/css/demo.css"/> -->
-
-  <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="src/material/css/material-dashboard.css"/>
 
 </head>
 
@@ -22,60 +19,77 @@
   <div class="container">
     <nav class="navbar navbar-info navbar-fixed-top" role="navigation">
       <div class="container-fluid">
-
         <div class="navbar-header">
-          <a class="navbar-brand" href="index.html">Educablocks</a>
-        </div>
-
-        <!--<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">-->
-          <ul class="nav navbar-nav">
-            <li class="dropdown active ">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Programas<b> </b></a>
-              <ul class="dropdown-menu">
-                <li class="active"><a href="index.html">Programación por bloques</a></li>
-                <li><a href="robots.html">Control de robots</a></li>
-                <li><a href="dashboard.html">Panel IOT</a></li>
-              </ul>
-              <li class="dropdown">
+            <button type="button" class="navbar-toggle" data-toggle="collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          <a class="navbar-brand" href="../index.html">Educablocks</a>
+          </div>
+          <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <i class="material-icons">apps</i>
+                <i class="material-icons">code</i>
+                <p class="hidden-lg hidden-md">Programas</p>
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a href="#" onclick="toogleCode()">Ocultar el código</a></li>
+                <li class="active"><a href="index.html">Bloques</a></li>
+                <li><a href="robots.html">Robots</a></li>
+                <li><a href="dashboard.html">Panel IOT</a></li>
+              </ul>
+                </a>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="material-icons">save</i>
+                  <p class="hidden-lg hidden-md">Archivo</p>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="#" onclick="toogleCode()">Ver/Ocultar el código</a></li>
                   <li><a href="#" onclick="uploadClick()">Cargar en Genuino 101</a></li>
                   <li><a href="#" onclick="saveCode()">Guardar código Arduino</a></li>
                   <li><a href="#" onclick="save()">Guardar Bloques</a></li>
                   <li><a href="#" onclick="fakeload">Cargar Bloques</a></li>
                   <input type="file" id="load" style="display: none;"/>
-                </ul>
+                  </ul>
+              </a>
               </li>
-            </li>
-          </ul>
-        <!--</div>-->
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="material-icons">crop_free</i>
+                  <p class="hidden-lg hidden-md">Configuración</p>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="#"  id="view-fullscreen">Pantalla Completa</a></li>
+                  <li><a href="#"  id="cancel-fullscreen">Salir de pantalla completa</a></li>
+                  </ul>
+                  </a>
 
-      </div>
-    </nav>
+              </li>
+
+      </nav>
   </div>
 
   <xml id="startBlocks" style="display: none">
     <block type="controls_setupLoop" deletable="false"></block>
   </xml>
-  <div id="wrap">
-    <div id="blockly" style="float: left; width: 66%;"></div>
-    <div id="code" style="float: right; width: 32%;"></div>
-  </div>
-</div>
+    <div id="wrap">
+        <div id="blockly" style="float: left; width: 66%;"></div>
+        <div id="code" style="float: right; width: 33%;"></div>
+    </div>
 
+
+<!-- js -->
+<script src="modules/jquery-3.1.1.js"></script>
+<script src="modules/bootstrap.js"></script>
 <script src="js/Blob.js"></script>
 <script src="js/spin.js"></script>
 <script src="js/FileSaver.min.js"></script>
 <script src="js/blockly_helper.js"></script>
-<!-- js -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <script src="src/bloques/js/underscore/underscore.js"></script>
 <script src="src/bloques/js/blockly-bq/blockly_compressed.js"></script>
@@ -169,5 +183,24 @@
 
 </script>
 </body>
+  <!-- Material Dashboard javascript methods -->
+  <script src="src/material/js/material-dashboard.js"></script>
+
+  <!--   Sharrre Library    -->
+    <script src="src/material/js/jquery.sharrre.js"></script>
+
+  <!-- Material Dashboard DEMO methods, don't include it in your project! -->
+  <script src="src/material/js/demo.js"></script>
+
+  <script type="text/javascript">
+      $(document).ready(function(){
+
+      // Javascript method's body can be found in assets/js/demos.js
+          demo.initDashboardPageCharts();
+
+      });
+  </script>
+
+  <script src="src/base.js"></script>
 
 </html>
