@@ -11,7 +11,7 @@ $(function() {
       device.pinMode(13, "OUTPUT");
 
       //Toggle checkbox
-      $('#toggle').change(function() {
+      $('#toggle-13').change(function() {
           // this will contain a reference to the checkbox   
           if (this.checked) {
               device.digitalWrite(13, 1);
