@@ -1616,7 +1616,6 @@
             return __p
         };
 
-
           
 
         this["JST"]["SALIDAS_photoresistor"] = function(obj) {
@@ -1632,7 +1631,24 @@
             return __p
         };
 
-        this["JST"]["SALIDAS_piezo_buzzer"] = function(obj) {
+this["JST"]["SALIDAS_ledrgb_definitions"] = function(obj) {
+            obj || (obj = {});
+            var __t, __p = '',
+                __e = _.escape;
+            with(obj) {
+                __p += 'void color(int R, int G, int B)\n\n analogWrite(' +                    
+                    ((__t = (dropdown_pinrojo)) == null ? '' : __t) +  ' , R);\nanalogWrite(' +                    
+                    ((__t = (dropdown_pinverde)) == null ? '' : __t) +  ' , G);\nanalogWrite(' +                    
+                    ((__t = (dropdown_pinazul)) == null ? '' : __t) +  ' , B);\n\n';
+            }
+            return __p
+        };
+
+
+
+
+
+        this["JST"]["SALIDAS_ledrgb"] = function(obj) {
             obj || (obj = {});
             var __t, __p = '',
                 __e = _.escape;
@@ -1646,7 +1662,7 @@
             }
             return __p
         };
- this["JST"]["SALIDAS_piezo_buzzer_setups"] = function(obj) {
+ this["JST"]["SALIDAS_ledrgb_setups"] = function(obj) {
             obj || (obj = {});
             var __t, __p = '',
                 __e = _.escape;
@@ -1657,10 +1673,7 @@
                     ((__t = (dropdown_pinverde)) == null ? '' : __t) +          
                     ',OUTPUT);\npinMode(' +
                     ((__t = (dropdown_pinazul)) == null ? '' : __t) +          
-                    ',OUTPUT);\n}\nvoid color(int R, int G, int B)\n{\nanalogWrite(' +                    
-                    ((__t = (dropdown_pinrojo)) == null ? '' : __t) +  ' , R);\nanalogWrite(' +                    
-                    ((__t = (dropdown_pinverde)) == null ? '' : __t) +  ', G);\nanalogWrite(' +                    
-                    ((__t = (dropdown_pinazul)) == null ? '' : __t) +  ', B);\n\n';
+                    ',OUTPUT);\n';
             }
             return __p
         };
@@ -3928,13 +3941,18 @@
          */
 
         //rgb 
-        Blockly.Arduino.SALIDAS_piezo_buzzer = function() {
+        Blockly.Arduino.SALIDAS_ledrgb = function() {
 
             var dropdown_pinrojo = Blockly.Arduino.valueToCode(this, 'PINROJO', Blockly.Arduino.ORDER_ATOMIC) || '';
             var dropdown_pinverde = Blockly.Arduino.valueToCode(this, 'PINVERDE', Blockly.Arduino.ORDER_ATOMIC) || '';
             var dropdown_pinazul = Blockly.Arduino.valueToCode(this, 'PINAZUL', Blockly.Arduino.ORDER_ATOMIC) || '';
             var dropdown_stat = this.getFieldValue('STAT') || '';
             var delay_time = Blockly.Arduino.valueToCode(this, 'DURA', Blockly.Arduino.ORDER_ATOMIC);
+            Blockly.Arduino.definitions_['declare_ledrgb'] = JST['SALIDAS_ledrgb_definitions']({
+                'dropdown_pinrojo': dropdown_pinrojo,
+                'dropdown_pinverde': dropdown_pinverde,
+                'dropdown_pinazul': dropdown_pinazul
+            });
             var code = '';
             var a = RoboBlocks.findPinMode(dropdown_pinrojo);
             code += a['code'];
@@ -3953,7 +3971,7 @@
             delay_time = a['pin'];
            
             if (RoboBlocks.isVariable(dropdown_pinrojo)) {
-                code += JST['SALIDAS_piezo_buzzer_setups']({
+                code += JST['SALIDAS_ledrgb_setups']({
                     'dropdown_pinrojo': dropdown_pinrojo,
                     'dropdown_pinverde': dropdown_pinverde,
                     'dropdown_pinazul': dropdown_pinazul,
@@ -3961,7 +3979,7 @@
                     'delay_time': delay_time
                 });
             } else {
-                Blockly.Arduino.setups_['SALIDAS_piezo_buzzer' + dropdown_pinrojo] = JST['SALIDAS_piezo_buzzer_setups']({
+                Blockly.Arduino.setups_['SALIDAS_ledrgb' + dropdown_pinrojo + dropdown_pinverde + dropdown_pinazul] = JST['SALIDAS_ledrgb_setups' ]({
                     'dropdown_pinrojo': dropdown_pinrojo,
                     'dropdown_pinverde': dropdown_pinverde,
                     'dropdown_pinazul': dropdown_pinazul,
@@ -3970,7 +3988,7 @@
                 });
             }
           
-            code += JST['SALIDAS_piezo_buzzer']({
+            code += JST['SALIDAS_ledrgb']({
                 'dropdown_pinrojo': dropdown_pinrojo,
                 'dropdown_pinverde': dropdown_pinverde,
                 'dropdown_pinazul': dropdown_pinazul,
@@ -3984,15 +4002,14 @@
 
 
         /**
-         * SALIDAS_piezo_buzzer block definition
-         * @type {Object}
+         * LED RGB
          */
-        Blockly.Blocks.SALIDAS_piezo_buzzer = {
+        Blockly.Blocks.SALIDAS_ledrgb = {
             category: RoboBlocks.locales.getKey('LANG_CATEGORY_SALIDAS'),
-            tags: ['buzzer'],
-            helpUrl: RoboBlocks.URL_BUZZER,
+            tags: ['ledrgb'],
+            helpUrl: RoboBlocks.URL_ledrgb,
             /**
-             * SALIDAS_piezo_buzzer initialization
+             * LED RGB
              */
             init: function() {
                 this.setColour(RoboBlocks.LANG_COLOUR_SALIDAS);
@@ -4015,24 +4032,24 @@
                 this.appendDummyInput('')
                     .appendField(RoboBlocks.locales.getKey('LANG_SALIDAS_LEDRGB_COLOR'))
                     .appendField(new Blockly.FieldDropdown([
-                        [RoboBlocks.locales.getKey('LANG_SALIDAS_PIEZO_BUZZER_ROJO') || 'ROJO', '255, 0, 0'],
-                        [RoboBlocks.locales.getKey('LANG_SALIDAS_PIEZO_BUZZER_VERDE') || 'VERDE', '0, 255, 0'],
-                        [RoboBlocks.locales.getKey('LANG_SALIDAS_PIEZO_BUZZER_AZUL') || 'AZUL', '0, 0, 255'],
-                        [RoboBlocks.locales.getKey('LANG_SALIDAS_PIEZO_BUZZER_AMARILLO') || 'AMARILLO', '255, 255, 0'],
-                        [RoboBlocks.locales.getKey('LANG_SALIDAS_PIEZO_BUZZER_VIOLETA') || 'VIOLETA', '153, 51, 255'],
-                        [RoboBlocks.locales.getKey('LANG_SALIDAS_PIEZO_BUZZER_NARANJA') || 'NARANJA', '255, 128, 0'],
-                        [RoboBlocks.locales.getKey('LANG_SALIDAS_PIEZO_BUZZER_APAGADO') || 'APAGADO', '0, 0, 0'],
+                        [RoboBlocks.locales.getKey('LANG_SALIDAS_LEDRGB_ROJO') || 'ROJO', '255, 0, 0'],
+                        [RoboBlocks.locales.getKey('LANG_SALIDAS_LEDRGB_VERDE') || 'VERDE', '0, 255, 0'],
+                        [RoboBlocks.locales.getKey('LANG_SALIDAS_LEDRGB_AZUL') || 'AZUL', '0, 0, 255'],
+                        [RoboBlocks.locales.getKey('LANG_SALIDAS_LEDRGB_AMARILLO') || 'AMARILLO', '255, 255, 0'],
+                        [RoboBlocks.locales.getKey('LANG_SALIDAS_LEDRGB_VIOLETA') || 'VIOLETA', '153, 51, 255'],
+                        [RoboBlocks.locales.getKey('LANG_SALIDAS_LEDRGB_NARANJA') || 'NARANJA', '255, 128, 0'],
+                        [RoboBlocks.locales.getKey('LANG_SALIDAS_LEDRGB_APAGADO') || 'APAGADO', '0, 0, 0'],
                     ]), 'STAT') //523
                     .setAlign(Blockly.ALIGN_RIGHT);
 
                 this.appendValueInput('DURA', Number)
                     .setCheck(Number)
                     .setAlign(Blockly.ALIGN_RIGHT)
-                    .appendField(RoboBlocks.locales.getKey('LANG_SALIDAS_PIEZO_BUZZER_DURATION'));
+                    .appendField(RoboBlocks.locales.getKey('LANG_SALIDAS_LEDRGB_DURATION'));
 
                 this.setPreviousStatement(true, null);
                 this.setNextStatement(true, null);
-                this.setTooltip(RoboBlocks.locales.getKey('LANG_SALIDAS_PIEZO_BUZZER_TOOLTIP'));
+                this.setTooltip(RoboBlocks.locales.getKey('LANG_SALIDAS_LEDRGB_TOOLTIP'));
             }
         };
 
