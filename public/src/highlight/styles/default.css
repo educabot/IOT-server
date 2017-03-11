@@ -9,7 +9,7 @@ Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiac
   font-family: Menlo, 'Bitstream Vera Sans Mono', 'DejaVu Sans Mono', Monaco, Consolas, monospace;
   font-size: 12px;
   line-height: 1.5;
-  min-height: 480px;
+  height: 100%;
   border-width: 0 !important;
 }
 
