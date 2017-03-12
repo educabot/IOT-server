@@ -166,7 +166,7 @@ demo = {
 
     	$.notify({
         	icon: "notifications",
-        	message: "Welcome to <b>Material Dashboard</b> - a beautiful freebie for every web developer."
+        	message: "Recuerda siempre apagar la luz para cuidar la electricidad."
 
         },{
             type: type[color],

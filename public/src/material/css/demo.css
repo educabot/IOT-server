@@ -62,3 +62,7 @@
 .tim-row h3{
     margin-top: 0;
 }
+
+#ex1Slider .slider-selection {
+    background: #BABABA;
+}
