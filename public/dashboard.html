@@ -8,9 +8,9 @@
   <link rel="icon" href="img/favicon.png">
   <title>Educablocks</title>
 
-  <link rel="stylesheet" href="src/bloques/css/educablocks.css">
   <link rel="stylesheet" href="src/material/css/bootstrap.min.css" rel="stylesheet"/>
   <link rel="stylesheet" href="src/material/css/material-dashboard.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="modules/bootstrap-toggle-master/css/bootstrap-toggle.min.css" rel="stylesheet"/>
 </head>
 
 <body>
@@ -40,7 +40,34 @@
 
       <div class="row">
 
-        <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="col-lg-12 col-md-6 col-sm-6">
+          <div class="card card-stats">
+            <div class="card-header" data-background-color="blue">
+              <i class="material-icons">wifi</i>
+            </div>
+            <div class="card-content">
+              <p class="category">
+                <i class="material-icons">network_check</i> Dirección IP del dispositivo
+                <br>
+              </p>
+            </div>
+            <div class="card-footer">
+              <div class="stats">
+                <div class="col-md-12">
+                  <input id='device_address' class="" type="text" name="fname" placeholder=" localhost:4000/serial">
+                  <button id="validate" class="btn btn-info" type="button">Conectar</button>
+                </div>
+              </div>
+            </div>
+            <!--
+            -->
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+
+        <div class="col-lg-4 col-md-6 col-sm-6">
           <div class="card card-stats">
             <div class="card-header" data-background-color="blue">
               <i class="material-icons">cloud</i>
@@ -56,6 +83,22 @@
             </div>
           </div>
         </div>
+        
+        <div class="col-md-8">
+          <div class="card">
+            <div class="card-header card-chart" data-background-color="blue">
+              <div class="ct-chart" id="container"></div>
+            </div>
+            <div class="card-footer">
+              <div class="stats">
+                <i class="material-icons">access_time</i> actualizando cada 5 segundos
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      </div class="row">
 
         <div class="col-lg-3 col-md-6 col-sm-6">
           <div class="card card-stats">
@@ -106,47 +149,88 @@
               </div>
             </div>
           </div>
+        </div>        
+        
+        <div class="col-lg-3 col-md-6 col-sm-6">
+          <div class="card card-stats">
+            <div class="card-header" data-background-color="blue">
+              <i class="material-icons">replay</i>
+            </div>
+            <div class="card-content">
+              <p class="category">Pin analógico A3:</p>
+              <h3 class="title"> <span id='A3'></span> <small>grados</small></h3>
+            </div>
+            <div class="card-footer">
+              <div class="stats">
+                <i class="material-icons">show_chart</i> Potenciómetro
+              </div>
+            </div>
+          </div>
         </div>
 
       </div>
 
       <div class="row">
 
-        <div class="col-md-8">
-          <div class="card">
-            <div class="card-header card-chart" data-background-color="blue">
-              <div class="ct-chart" id="container"></div>
-            </div>
-            <div class="card-footer">
-              <div class="stats">
-                <i class="material-icons">access_time</i> actualizando cada 5 segundos
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="col-lg-3 col-md-6 col-sm-6">
           <div class="card card-stats">
             <div class="card-header" data-background-color="blue">
-              <i class="material-icons">wifi</i>
+              <i class="material-icons">lightbulb_outline</i>
             </div>
             <div class="card-content">
-              <p class="category"><i class="material-icons">network_check</i> Dirección IP del dispositivo</p>
+              <p class="category"><i class="material-icons">highlight</i> Pin digital 10:</p>
               <br>
-              <input id='device_address' type="text" name="fname" placeholder=" localhost:4000/serial">
+              <br>
             </div>
             <div class="card-footer">
               <div class="stats">
-                <label class="col-md-6 control-label" for="validate"></label>
-                <div class="col-md-6">
-                  <button id="validate" class="btn btn-info center-block" type="button">Conectar</button>
-                </div>
+                <!--
+                <button id='on' class='btn btn-info ' type="button">Prender</button>
+                <button id='off' class='btn btn-danger' type="button">Apagar</button>
+                -->
+                <input id='toggle-10' type="checkbox" data-size="large" data-on="Prendido" data-off="Apagado" data-toggle="toggle" data-onstyle="success" data-offstyle="danger">
               </div>
             </div>
           </div>
         </div>
 
-        <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="col-lg-3 col-md-6 col-sm-6">
+          <div class="card card-stats">
+            <div class="card-header" data-background-color="blue">
+              <i class="material-icons">lightbulb_outline</i>
+            </div>
+            <div class="card-content">
+              <p class="category"><i class="material-icons">highlight</i> Pin digital 11:</p>
+              <br>
+              <br>
+            </div>
+            <div class="card-footer">
+              <div class="stats">
+                <input id='toggle-11' type="checkbox" data-size="large" data-on="Prendido" data-off="Apagado" data-toggle="toggle" data-onstyle="success" data-offstyle="danger">
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6 col-sm-6">
+          <div class="card card-stats">
+            <div class="card-header" data-background-color="blue">
+              <i class="material-icons">lightbulb_outline</i>
+            </div>
+            <div class="card-content">
+              <p class="category"><i class="material-icons">highlight</i> Pin digital 12:</p>
+              <br>
+              <br>
+            </div>
+            <div class="card-footer">
+              <div class="stats">
+                <input id='toggle-12' type="checkbox" data-size="large" data-on="Prendido" data-off="Apagado" data-toggle="toggle" data-onstyle="success" data-offstyle="danger">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-6">
           <div class="card card-stats">
             <div class="card-header" data-background-color="blue">
               <i class="material-icons">lightbulb_outline</i>
@@ -158,9 +242,7 @@
             </div>
             <div class="card-footer">
               <div class="stats">
-                <br>
-                <button id='on' class='btn btn-info ' type="button">Prender</button>
-                <button id='off' class='btn btn-danger' type="button">Apagar</button>
+                <input id='toggle-13' type="checkbox" data-size="large" data-on="Prendido" data-off="Apagado" data-toggle="toggle" data-onstyle="success" data-offstyle="danger">
               </div>
             </div>
           </div>
@@ -174,18 +256,13 @@
   <!-- js -->
   <script src="modules/jquery-3.1.1.js"></script>
   <script src="modules/bootstrap.js"></script>
+  <script src="modules/bootstrap-toggle-master/js/bootstrap-toggle.min.js"></script>
 
   <script src='modules/Highcharts-5.0.7/code/highcharts.js'></script>
   <script src='modules/Highcharts-5.0.7/code/js/modules/exporting.js'></script>
   <script src="modules/ajaxq.js"></script>
 
-  <!--
-  <script src='https://code.highcharts.com/highcharts.js'></script>
-  <script src='https://code.highcharts.com/modules/exporting.js'></script>
-  -->
-
   <script src="src/dashboard/js/arest.js"></script>
-  <!--<script src="src/dashboard/js/script.js"></script>-->
   <script src="src/dashboard/js/index.js"></script>
 
 </body>

@@ -10,20 +10,15 @@ $(function() {
       //device.pinMode(6, "OUTPUT");
       device.pinMode(13, "OUTPUT");
 
-      // Button
-      $('#on').click(function() {
-        device.digitalWrite(13, 1);
+      //Toggle checkbox
+      $('#toggle-13').change(function() {
+          // this will contain a reference to the checkbox   
+          if (this.checked) {
+              device.digitalWrite(13, 1);
+          } else {
+              device.digitalWrite(13, 0);
+          }
       });
-
-      $('#off').click(function() {
-        device.digitalWrite(13, 0);
-      });
-
-      // // Analog write
-      // $('#slider').mouseup(function() {
-      //   var val = $('#slider').val();
-      //   device.analogWrite(6, val);
-      // });
 
       //Analog read every 5 seconds
       device.analogRead(0, function(data) {
@@ -43,6 +38,23 @@ $(function() {
           $("#A1").html(data.return_value);
         });
       }, 5000);
+
+      // // Analog write
+      // $('#slider').mouseup(function() {
+      //   var val = $('#slider').val();
+      //   device.analogWrite(6, val);
+      // });
+
+      /*
+      // Button
+      $('#on').click(function() {
+        device.digitalWrite(13, 1);
+      });
+
+      $('#off').click(function() {
+        device.digitalWrite(13, 0);
+      });
+      */
 
       // Digital read every 5 seconds
       // device.digitalRead(11, function(data) {
