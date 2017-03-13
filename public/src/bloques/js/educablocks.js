@@ -3979,7 +3979,7 @@ this["JST"]["SALIDAS_ledrgb_definitions"] = function(obj) {
                     'delay_time': delay_time
                 });
             } else {
-                Blockly.Arduino.setups_['SALIDAS_ledrgb' + dropdown_pinrojo + dropdown_pinverde + dropdown_pinazul] = JST['SALIDAS_ledrgb_setups' ]({
+                Blockly.Arduino.setups_['SALIDAS_ledrgb'] = JST['SALIDAS_ledrgb_setups' ]({
                     'dropdown_pinrojo': dropdown_pinrojo,
                     'dropdown_pinverde': dropdown_pinverde,
                     'dropdown_pinazul': dropdown_pinazul,
