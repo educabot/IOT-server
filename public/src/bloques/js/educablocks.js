@@ -767,7 +767,7 @@
                 LANG_ADVANCED_CONVERSION_BINARY: 'Binario',
                 LANG_ADVANCED_CONVERSION_VALUE: 'valor',
                 LANG_ADVANCED_CONVERSION_TOOLTIP: 'Convertir la base de un número.',
-                LANG_ADVANCED_INOUT_ANALOG_READ: 'Leer el pin analógico PIN#',
+                LANG_ADVANCED_INOUT_ANALOG_READ: 'Leer el pin analógico PIN',
                 LANG_ADVANCED_INOUT_ANALOG_READ_TOOLTIP: 'Lee el valor de un pin analógico específico.',
                 LANG_ADVANCED_INOUT_ANALOG_WRITE: 'Escribir en PIN digital',
                 LANG_ADVANCED_INOUT_ANALOG_WRITE_VALUE: 'el valor analógico',
@@ -780,7 +780,7 @@
                 LANG_ADVANCED_INOUT_DIGITAL_READ: 'Leer el pin digital PIN#',
                 LANG_ADVANCED_INOUT_DIGITAL_READ_TOOLTIP: 'Lee el valor desde un pin digital específico.',
                 LANG_ADVANCED_INOUT_DIGITAL_WRITE: 'Escribir en el pin digital',
-                LANG_ADVANCED_INOUT_DIGITAL_WRITE_PIN: 'PIN#',
+                LANG_ADVANCED_INOUT_DIGITAL_WRITE_PIN: 'PIN',
                 LANG_ADVANCED_INOUT_DIGITAL_WRITE_STATE: 'estado',
                 LANG_ADVANCED_INOUT_DIGITAL_WRITE_HIGH: 'ALTO',
                 LANG_ADVANCED_INOUT_DIGITAL_WRITE_LOW: 'BAJO',
@@ -850,8 +850,8 @@
                 //ENTRADAS blocks :
                 LANG_CATEGORY_ENTRADAS: 'Entradas',
                 LANG_ENTRADAS_ULTRASONIDO: 'Sensor de Ultrasonidos',
-                LANG_ENTRADAS_ULTRASONIDO_RED_PIN: 'ECHO PIN#',
-                LANG_ENTRADAS_ULTRASONIDO_BLUE_PIN: 'TRIGGER PIN#',
+                LANG_ENTRADAS_ULTRASONIDO_RED_PIN: 'ECHO PIN',
+                LANG_ENTRADAS_ULTRASONIDO_BLUE_PIN: 'TRIGGER PIN',
                 LANG_ENTRADAS_ULTRASONIDO_TOOLTIP: 'Devuelve la distancia medida por el sensor.',
                 LANG_ENTRADAS_GYRO: 'Giroscopio Genuino 101',
                 LANG_ENTRADAS_GYRO_EJE: 'Eje',
@@ -864,7 +864,7 @@
                 LANG_ENTRADAS_ACE_EJE_Y: 'y',
                 LANG_ENTRADAS_ACE_EJE_Z: 'z',
                 LANG_ENTRADAS_BUTTON: 'Botón',
-                LANG_ENTRADAS_BUTTON_PIN: 'PIN#',
+                LANG_ENTRADAS_BUTTON_PIN: 'PIN',
                 LANG_ENTRADAS_BUTTON_TOOLTIP: 'Botón ',
                 LANG_ENTRADAS_FOLLOWER: 'Seguidor de líneas',
                 LANG_ENTRADAS_FOLLOWER_PIN_LEFT: 'PIN IZQUIERDA#',
@@ -873,13 +873,13 @@
                 LANG_ENTRADAS_FOLLOWER_RIGHT: 'Derecha',
                 LANG_ENTRADAS_FOLLOWER_TOOLTIP: 'Devuelve el valor digital de los sensores ópticos y crea un condicional para cada uno',
                 LANG_ENTRADAS_INFRARED: 'Sensor óptico',
-                LANG_ENTRADAS_INFRARED_PIN: 'PIN#',
+                LANG_ENTRADAS_INFRARED_PIN: 'PIN',
                 LANG_ENTRADAS_INFRARED_TOOLTIP: 'Devuelve el valor digital del sensor óptico',
                 LANG_ENTRADAS_PHOTORESISTOR: 'Sensor de Luz',
-                LANG_ENTRADAS_PHOTORESISTOR_PIN: 'PIN#',
+                LANG_ENTRADAS_PHOTORESISTOR_PIN: 'PIN',
                 LANG_ENTRADAS_PHOTORESISTOR_TOOLTIP: 'Devuelve el valor analógico del sensor de luz (fotorresistencia).',
                 LANG_SALIDAS_PIEZO_BUZZER: 'Zumbador',
-                LANG_SALIDAS_PIEZO_BUZZER_PIN: 'PIN#',
+                LANG_SALIDAS_PIEZO_BUZZER_PIN: 'PIN',
                 LANG_SALIDAS_PIEZO_BUZZER_TONE: 'TONO',
                 LANG_SALIDAS_PIEZO_BUZZER_DO: 'DO',
                 LANG_SALIDAS_PIEZO_BUZZER_RE: 'RE',
@@ -891,7 +891,7 @@
                 LANG_SALIDAS_PIEZO_BUZZER_DURATION: 'Duración [ms]',
                 LANG_SALIDAS_PIEZO_BUZZER_TOOLTIP: 'Zumbador piezoeléctrico',
                 LANG_ENTRADAS_POTENTIOMETER: 'Potenciómetro',
-                LANG_ENTRADAS_POTENTIOMETER_PIN: 'PIN#',
+                LANG_ENTRADAS_POTENTIOMETER_PIN: 'PIN',
                 LANG_ENTRADAS_POTENTIOMETER_TOOLTIP: 'Potenciómetro',
                 LANG_ENTRADAS_LLUVIA: 'Sensor de humedad suelo',
                 LANG_ENTRADAS_LLUVIA_PIN: 'PIN#',
@@ -902,9 +902,11 @@
                 LANG_ENTRADAS_SONIDO: 'Sensor de sonido',
                 LANG_ENTRADAS_SONIDO_PIN: 'PIN#',
                 LANG_ENTRADAS_SONIDO_TOOLTIP: 'Devuelve el valor analógico medido por el sensor de sonido.',
-                LANG_ENTRADAS_TEMPERATURA: 'Sensor de temperatura',
-                LANG_ENTRADAS_TEMPERATURA_PIN: 'PIN#',
-                LANG_ENTRADAS_TEMPERATURA_TOOLTIP: 'Devuelve los grados celsius del sensor de temperatura',
+                LANG_ENTRADAS_TEMPERATURA: 'DHT11',
+                LANG_ENTRADAS_TEMPERATURA_PIN: 'V. PIN',
+                LANG_ENTRADAS_TEMPERATURA_TEMP: 'V. TEMP',
+                LANG_ENTRADAS_TEMPERATURA_HUM: 'V. HUM',
+                LANG_ENTRADAS_TEMPERATURA_TOOLTIP: 'Devuelve los grados celcius y el porcentaje de humedad',
                 //servo blocks :
                 LANG_CATEGORY_SERVO: 'Servo',
                 LANG_SERVO_CONT: 'Servo rotación continua',
@@ -1702,17 +1704,38 @@ this["JST"]["SALIDAS_ledrgb_definitions"] = function(obj) {
             return __p
         };
  
- 
-        this["JST"]["SALIDAS_potentiometer"] = function(obj) {
+
+this["JST"]["Entradas_temperatura_definitions"] = function(obj) {
             obj || (obj = {});
             var __t, __p = '',
                 __e = _.escape;
             with(obj) {
-                __p += '( 5.0 * analogRead(' +
-                    ((__t = (dropdown_pin)) == null ? '' : __t) +
-                    ')* 100.0) / 1024.0';
-
+                __p += 'DHT11 dht11\n\n';
             }
+            return __p
+        };
+
+this["JST"]["define_temperatura"] = function(obj) {
+            obj || (obj = {});
+            var __t, __p = '',
+                __e = _.escape;
+            with(obj) {
+                __p += '#include <DHT11.h>\n\n';
+            }
+            return __p
+        };
+
+ 
+        this["JST"]["Entradas_temperatura"] = function(obj) {
+            obj || (obj = {});
+            var __t, __p = '',
+                __e = _.escape;
+             with(obj) {
+            __p +='dht11.read(' +                    
+                    ((__t = (dropdown_pin_temp)) == null ? '' : __t) +          
+                    ',' +
+                    ((__t = (dropdown_pin_hum)) == null ? '' : __t) +          
+                    ')'            }
             return __p
         };
 
@@ -4063,38 +4086,66 @@ this["JST"]["SALIDAS_ledrgb_definitions"] = function(obj) {
          * SALIDAS_potentiometer code generation
          * @return {String} Code generated with block parameters
          */
-        Blockly.Arduino.SALIDAS_potentiometer = function() {
-            var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
+
+
+
+
+        Blockly.Arduino.Entradas_temperatura = function() {
+            var dropdown_pin_temp = Blockly.Arduino.valueToCode(this, 'TEMP', Blockly.Arduino.ORDER_ATOMIC) || '';
+            var dropdown_pin_hum = Blockly.Arduino.valueToCode(this, 'HUM', Blockly.Arduino.ORDER_ATOMIC) || '';
+            var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC) || '';
+
             var code = '';
-            var a = RoboBlocks.findPinMode(dropdown_pin);
+            
+            a = RoboBlocks.findPinMode(dropdown_pin_temp);
+            code += a['code'];
+            dropdown_pin_temp = a['pin'];
+
+            a = RoboBlocks.findPinMode(dropdown_pin_hum);
+            code += a['code'];
+            dropdown_pin_hum = a['pin'];
+
+            a = RoboBlocks.findPinMode(dropdown_pin);
             code += a['code'];
             dropdown_pin = a['pin'];
 
-            code += JST['SALIDAS_potentiometer']({
-                'dropdown_pin': dropdown_pin
+
+            code += JST['Entradas_temperatura']({
+                'dropdown_pin': dropdown_pin,
+                'dropdown_pin_temp': dropdown_pin_temp,
+                'dropdown_pin_hum': dropdown_pin_hum
             });
 
-            return [code, Blockly.Arduino.ORDER_ATOMIC];
+              return code;
         };
 
         /**
-         * SALIDAS_potentiometer block definition
-         * @type {Object}
+         * temperatura
          */
-        Blockly.Blocks.SALIDAS_potentiometer = {
+        Blockly.Blocks.Entradas_temperatura = {
             category: RoboBlocks.locales.getKey('LANG_CATEGORY_ENTRADAS'),
-            tags: ['potentiometer'],
-            helpUrl: RoboBlocks.URL_POTENTIOMETER,
-            /**
-             * SALIDAS_potentiometer initialization
-             */
+            tags: ['temperatura'],
+            helpUrl: RoboBlocks.URL_temperatura,
+
             init: function() {
                 this.setColour(RoboBlocks.LANG_COLOUR_ENTRADAS);
-                this.appendValueInput('PIN')
+                this.appendDummyInput('IMG')
                     .appendField(RoboBlocks.locales.getKey('LANG_ENTRADAS_TEMPERATURA'))
                     .appendField(new Blockly.FieldImage('img/blocks/06.png', 208 * options.zoom, 139 * options.zoom))
-                    .appendField(RoboBlocks.locales.getKey('LANG_ENTRADAS_TEMPERATURA_PIN'))
-                    .setCheck(Number);
+                    this.appendValueInput('TEMP')
+                    .appendField(RoboBlocks.locales.getKey('LANG_ENTRADAS_TEMPERATURA_TEMP'))                    
+                    .setCheck(Number)
+                    .setAlign(Blockly.ALIGN_RIGHT);
+                this.setOutput(true, Number);    
+                    this.appendValueInput('HUM')
+                    .appendField(RoboBlocks.locales.getKey('LANG_ENTRADAS_TEMPERATURA_HUM'))                    
+                    .setCheck(Number)
+                    .setAlign(Blockly.ALIGN_RIGHT);
+                this.setOutput(true, Number);
+                    this.appendValueInput('PIN')
+                    .appendField(RoboBlocks.locales.getKey('LANG_ENTRADAS_TEMPERATURA_PIN'))                    
+                    .setCheck(Number)
+                    .setAlign(Blockly.ALIGN_RIGHT);
                 this.setOutput(true, Number);
                 this.setTooltip(RoboBlocks.locales.getKey('LANG_ENTRADAS_TEMPERATURA_TOOLTIP'));
             }
