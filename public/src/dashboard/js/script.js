@@ -172,14 +172,14 @@ $(document).ready(function() {
     }, 1000);
 
     // Digital read every 5 seconds
-    // device.digitalRead(11, function(data) {
-    //   $('#2').html(data.return_value);
-    // });
-    // setInterval(function() {
-    //   device.digitalRead(11, function(data) {
-    //     $('#2').html(data.return_value);
-    //   });
-    // }, 1000);
+    device.digitalRead(11, function(data) {
+      $('#2').html(data.return_value);
+     });
+     setInterval(function() {
+       device.digitalRead(11, function(data) {
+         $('#2').html(data.return_value);
+       });
+     }, 1000);
 
     // // Temperature display
     // device.getVariable('temperature', function(data) {
