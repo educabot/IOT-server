@@ -1705,39 +1705,6 @@ this["JST"]["SALIDAS_ledrgb_definitions"] = function(obj) {
         };
  
 
-this["JST"]["Entradas_temperatura_definitions"] = function(obj) {
-            obj || (obj = {});
-            var __t, __p = '',
-                __e = _.escape;
-            with(obj) {
-                __p += 'DHT11 dht11\n\n';
-            }
-            return __p
-        };
-
-this["JST"]["define_temperatura"] = function(obj) {
-            obj || (obj = {});
-            var __t, __p = '',
-                __e = _.escape;
-            with(obj) {
-                __p += '#include <DHT11.h>\n\n';
-            }
-            return __p
-        };
-
- 
-        this["JST"]["Entradas_temperatura"] = function(obj) {
-            obj || (obj = {});
-            var __t, __p = '',
-                __e = _.escape;
-             with(obj) {
-            __p +='dht11.read(' +                    
-                    ((__t = (dropdown_pin_temp)) == null ? '' : __t) +          
-                    ',' +
-                    ((__t = (dropdown_pin_hum)) == null ? '' : __t) +          
-                    ')'            }
-            return __p
-        };
 
         this["JST"]["bt_serial_available"] = function(obj) {
             obj || (obj = {});
@@ -4090,66 +4057,7 @@ this["JST"]["define_temperatura"] = function(obj) {
 
 
 
-        Blockly.Arduino.Entradas_temperatura = function() {
-            var dropdown_pin_temp = Blockly.Arduino.valueToCode(this, 'TEMP', Blockly.Arduino.ORDER_ATOMIC) || '';
-            var dropdown_pin_hum = Blockly.Arduino.valueToCode(this, 'HUM', Blockly.Arduino.ORDER_ATOMIC) || '';
-            var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC) || '';
-
-            var code = '';
-            
-            a = RoboBlocks.findPinMode(dropdown_pin_temp);
-            code += a['code'];
-            dropdown_pin_temp = a['pin'];
-
-            a = RoboBlocks.findPinMode(dropdown_pin_hum);
-            code += a['code'];
-            dropdown_pin_hum = a['pin'];
-
-            a = RoboBlocks.findPinMode(dropdown_pin);
-            code += a['code'];
-            dropdown_pin = a['pin'];
-
-
-            code += JST['Entradas_temperatura']({
-                'dropdown_pin': dropdown_pin,
-                'dropdown_pin_temp': dropdown_pin_temp,
-                'dropdown_pin_hum': dropdown_pin_hum
-            });
-
-              return code;
-        };
-
-        /**
-         * temperatura
-         */
-        Blockly.Blocks.Entradas_temperatura = {
-            category: RoboBlocks.locales.getKey('LANG_CATEGORY_ENTRADAS'),
-            tags: ['temperatura'],
-            helpUrl: RoboBlocks.URL_temperatura,
-
-            init: function() {
-                this.setColour(RoboBlocks.LANG_COLOUR_ENTRADAS);
-                this.appendDummyInput('IMG')
-                    .appendField(RoboBlocks.locales.getKey('LANG_ENTRADAS_TEMPERATURA'))
-                    .appendField(new Blockly.FieldImage('img/blocks/06.png', 208 * options.zoom, 139 * options.zoom))
-                    this.appendValueInput('TEMP')
-                    .appendField(RoboBlocks.locales.getKey('LANG_ENTRADAS_TEMPERATURA_TEMP'))                    
-                    .setCheck(Number)
-                    .setAlign(Blockly.ALIGN_RIGHT);
-                this.setOutput(true, Number);    
-                    this.appendValueInput('HUM')
-                    .appendField(RoboBlocks.locales.getKey('LANG_ENTRADAS_TEMPERATURA_HUM'))                    
-                    .setCheck(Number)
-                    .setAlign(Blockly.ALIGN_RIGHT);
-                this.setOutput(true, Number);
-                    this.appendValueInput('PIN')
-                    .appendField(RoboBlocks.locales.getKey('LANG_ENTRADAS_TEMPERATURA_PIN'))                    
-                    .setCheck(Number)
-                    .setAlign(Blockly.ALIGN_RIGHT);
-                this.setOutput(true, Number);
-                this.setTooltip(RoboBlocks.locales.getKey('LANG_ENTRADAS_TEMPERATURA_TOOLTIP'));
-            }
-        };
+        
 
         // Source: src/blocks/bt_serial_available/bt_serial_available.js
         /* global Blockly, JST, RoboBlocks */
@@ -5650,8 +5558,8 @@ this["JST"]["define_temperatura"] = function(obj) {
                     this.removeInput('YCOOR');
                 } catch (e) {}
                 if (this.getFieldValue('POS') === 'TRUE') {
-                    this.appendValueInput('XCOOR').appendField('row').setAlign(Blockly.ALIGN_RIGHT);
-                    this.appendValueInput('YCOOR').appendField('column').setAlign(Blockly.ALIGN_RIGHT);
+                    this.appendValueInput('XCOOR').appendField('fila').setAlign(Blockly.ALIGN_RIGHT);
+                    this.appendValueInput('YCOOR').appendField('columna').setAlign(Blockly.ALIGN_RIGHT);
                 }
             },
             onchange: function() {
@@ -8440,6 +8348,136 @@ this["JST"]["define_temperatura"] = function(obj) {
 
             return [code, Blockly.Arduino.ORDER_ATOMIC];
         };
+
+
+//dht11
+Blockly.Arduino.SALIDAS_dht11 = function() {
+            var temp_pin = Blockly.Arduino.valueToCode(this, 'TEMP PIN', Blockly.Arduino.ORDER_ATOMIC);
+            var hum_pin = Blockly.Arduino.valueToCode(this, 'HUM PIN', Blockly.Arduino.ORDER_ATOMIC);
+            var num_pin = Blockly.Arduino.valueToCode(this, 'NUM PIN', Blockly.Arduino.ORDER_ATOMIC);
+
+            var code = '';
+            var a = RoboBlocks.findPinMode(temp_pin);
+            code += a['code'];
+            temp_pin = a['pin'];
+
+            a = RoboBlocks.findPinMode(hum_pin);
+            code += a['code'];
+            hum_pin = a['pin'];
+
+
+            Blockly.Arduino.definitions_['define_SALIDAS_dht11'] = JST['SALIDAS_dht11_definitions' ]({
+                'num_pin': num_pin
+            });
+
+            if (RoboBlocks.isVariable(temp_pin)) {
+                code += JST['SALIDAS_dht11_setups_echo']({
+                    'temp_pin': temp_pin
+                });
+            } else {
+                Blockly.Arduino.setups_['setup_SALIDAS_dht11_' + temp_pin + hum_pin] = JST['SALIDAS_dht11_setups_echo']({
+                    'temp_pin': temp_pin
+                });
+            }
+            if (RoboBlocks.isVariable(hum_pin)) {
+                code += JST['SALIDAS_dht11_setups_trigger']({
+                    'hum_pin': hum_pin
+                });
+            } else {
+                Blockly.Arduino.setups_['setup_SALIDAS_dht11_2' + hum_pin + temp_pin] = JST['SALIDAS_dht11_setups_trigger']({
+                    'hum_pin': hum_pin
+                });
+            }
+            code += JST['SALIDAS_dht11']({
+                'hum_pin': hum_pin,
+                'num_pin': num_pin,
+                'temp_pin': temp_pin
+            });
+            return [code, Blockly.Arduino.ORDER_ATOMIC];
+        };
+        /**
+         * SALIDAS_dht11 block definition
+         * @type {Object}
+         */
+       
+
+        Blockly.Blocks.SALIDAS_dht11 = {
+            category: RoboBlocks.locales.getKey('LANG_CATEGORY_ENTRADAS'),
+            tags: ['dht11'],
+            helpUrl: RoboBlocks.URL_US,
+            init: function() {
+                this.setColour(RoboBlocks.LANG_COLOUR_ENTRADAS);
+                this.appendDummyInput('').appendField(RoboBlocks.locales.getKey('LANG_ENTRADAS_TEMPERATURA')).appendField(new Blockly.FieldImage('img/blocks/06.png', 208 * options.zoom, 140 * options.zoom));
+                this.appendValueInput('TEMP PIN').appendField(RoboBlocks.locales.getKey('LANG_ENTRADAS_TEMPERATURA_TEMP')).setCheck(Number).setAlign(Blockly.ALIGN_RIGHT);
+                this.appendValueInput('HUM PIN').appendField(RoboBlocks.locales.getKey('LANG_ENTRADAS_TEMPERATURA_HUM')).setCheck(Number).setAlign(Blockly.ALIGN_RIGHT);
+                this.appendValueInput('NUM PIN').appendField(RoboBlocks.locales.getKey('LANG_ENTRADAS_TEMPERATURA_PIN')).setCheck(Number).setAlign(Blockly.ALIGN_RIGHT);
+                this.setInputsInline(false);
+                this.setOutput(true, Number);
+                this.setTooltip(RoboBlocks.locales.getKey('LANG_ENTRADAS_TEMPERATURA_TOOLTIP'));
+            }
+        };
+
+          this["JST"]["SALIDAS_dht11"] = function(obj) {
+            obj || (obj = {});
+            var __t, __p = '',
+                __e = _.escape;
+            with(obj) {
+             __p += 'dht11.read(' +
+                    ((__t = (temp_pin)) == null ? '' : __t) +
+                    ',' +
+                    ((__t = (hum_pin)) == null ? '' : __t) +
+                    ')';
+
+            }
+            return __p
+        };
+
+        this["JST"]["SALIDAS_dht11_definitions"] = function(obj) {
+            obj || (obj = {});
+            var __t, __p = '',
+                __e = _.escape;
+            with(obj) {
+                __p += '#include <DHT11.h>\n\nDHT11 dht11(' +
+                    ((__t = (num_pin)) == null ? '' : __t) +
+                    ')\n\n';
+
+            }
+            return __p
+        };
+
+
+        this["JST"]["SALIDAS_dht11_setups_echo"] = function(obj) {
+            obj || (obj = {});
+            var __t, __p = '',
+                __e = _.escape;
+            with(obj) {
+                __p += '';
+
+            }
+            return __p
+        };
+
+        this["JST"]["SALIDAS_dht11_setups_trigger"] = function(obj) {
+            obj || (obj = {});
+            var __t, __p = '',
+                __e = _.escape;
+            with(obj) {
+                __p += '';
+
+            }
+            return __p
+        };
+
+//findht11
+
+
+
+
+
+
+
+
+
 
         Blockly.Blocks.text_substring = {
             category: RoboBlocks.locales.getKey('LANG_CATEGORY_TEXT'),
